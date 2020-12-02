@@ -1,0 +1,52 @@
+.Container {
+    display: flex;
+    height: 55vmin;
+    width: 100vmin;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    justify-content: center;
+    margin: auto;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.Texts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.Hello-text {
+    font-size: xx-large;
+    color: #FE1C42;
+    font-weight: bold;
+}
+
+.Description-text {
+    font-size: large;
+    text-align: center;
+    margin-top: 5vmin;
+    max-width: 80vmin;
+    color: #FE1C42;
+}
+
+.Start-button {
+    height: 7vmin;
+    border-radius: 10px;
+    border-width: 0;
+    width: 30vmin;
+    background-color: #FE1C42;
+    color: white;
+    font-family: 'Roboto';
+    font-size: large;
+    margin-top: 5vmin;
+    transition: all .2s ease-in-out; 
+}
+
+.Start-button:hover { 
+    transform: scale(0.9); 
+    cursor: pointer;
+}

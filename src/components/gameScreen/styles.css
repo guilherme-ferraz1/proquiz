@@ -1,0 +1,73 @@
+.Container {
+    display: flex;
+    height: 55vmin;
+    width: 100vmin;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    justify-content: center;
+    margin: auto;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.Question {
+    font-size: xx-large;
+    color: #FE1C42;
+    font-weight: bold;
+    justify-self: flex-start;
+    margin-bottom: 12vmin;
+    text-align: center;
+}
+
+.Answers {
+    flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Answer {
+    background-color: #FE1C42;
+    font-size: large;
+    color: white;
+    font-family: 'Roboto';
+    border-radius: 10px;
+    height: 8vmin;
+    width: 40vmin;
+    border-width: 0;
+    margin: 2vmin;
+    transition: all .2s ease-in-out; 
+}
+
+.Answer:hover { 
+    transform: scale(0.9); 
+    cursor: pointer;
+}
+
+.Score {
+    color: #FE1C42;
+    font-size: medium;
+    font-weight: bold;
+    justify-content: flex-end;
+    width: 90%;
+    margin-bottom: 3vmin;
+}   
+
+.Skip {
+    background-color: #FE1C42;
+    font-size: small;
+    color: white;
+    font-family: 'Roboto';
+    border-radius: 10px;
+    height: 4vmin;
+    width: 20vmin;
+    border-width: 0;
+    margin: 2vmin;
+    transition: all .2s ease-in-out; 
+}
+
+.Skip:hover { 
+    transform: scale(0.9); 
+    cursor: pointer;
+}
