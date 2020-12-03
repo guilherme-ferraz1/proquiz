@@ -1,6 +1,7 @@
 # Pró Quiz
 
-Quiz de perguntas sobre conhecimento gerais
+- App feito em ReactJS utilizando Hooks e Redux.
+- Consome uma API feita em Django
 
 ## Excutar código
 
