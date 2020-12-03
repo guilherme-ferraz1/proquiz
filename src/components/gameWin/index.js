@@ -1,8 +1,9 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { actions as gameStateActions } from './../../actions/gameState'
 import { actions as scoreActions } from './../../actions/score'
+import { actions as gameStateAction } from './../../actions/gameState'
+
 
 import { selectors as scoreSelectors} from './../../selectors/score'
 
@@ -14,12 +15,16 @@ const GameWin = () => {
 
     const dispatch = useDispatch()
     
-    const handleChangeScreen = () => dispatch(gameStateActions.game())
     const handleZeroScore = () => dispatch(scoreActions.zero())
+    const handleChangeScreen = () => dispatch(gameStateAction.add())
 
     const startAgain = () => {
         handleZeroScore()
-        handleChangeScreen()
+        refreshPage()    
+    }
+
+    const refreshPage = () => { 
+        window.location.reload(); 
     }
 
   return (
@@ -31,12 +36,22 @@ const GameWin = () => {
             <div className="Score-text">
                 Sua pontuação foi: {score}
             </div>
+            <div className="Description-text">
+                Agora você pode adicionar uma nova pergunta!
+            </div>
         </div>
+
+        <button 
+            className="Start-button"
+            onClick={() => handleChangeScreen()}
+        >
+            Sim, quero adicionar 
+        </button>
         <button 
             className="Start-button"
             onClick={() => startAgain()}
         >
-            Jogar novamente
+            Voltar para o menu
         </button>
     </div>
   );

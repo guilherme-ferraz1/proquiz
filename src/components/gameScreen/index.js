@@ -16,101 +16,33 @@ Object.size = function(obj) {
     return size;
 };
 
-
-let perguntas = [
-    {
-        "answers": [
-            {
-                "value": "1",
-                "isCorrect": false
-            },
-            {
-                "value": "2",
-                "isCorrect": true
-            },
-            {
-                "value": "3",
-                "isCorrect": false
-            },
-            {
-                "value": "4",
-                "isCorrect": false
-            }
-        ],
-      "title": "quanto é 1 + 1?"
-    }, 
-    {
-        "answers": [
-            {
-              "value": "1",
-              "isCorrect": false
-            },
-            {
-              "value": "2",
-              "isCorrect": false
-            },
-            {
-              "value": "3",
-              "isCorrect": true
-            },
-            {
-              "value": "4",
-              "isCorrect": false
-            }
-        ],
-          "title": "quanto é 1 + 2?"
-    },
-    {
-        "answers": [
-            {
-              "value": "1",
-              "isCorrect": false
-            },
-            {
-              "value": "2",
-              "isCorrect": false
-            },
-            {
-              "value": "3",
-              "isCorrect": false
-            },
-            {
-              "value": "4",
-              "isCorrect": true
-            }
-        ],
-          "title": "quanto é 1 + 3?"
-    }
-]
-
-const GameScreen = () => {
+const GameScreen = ({questions}) => {
 
     const score = useSelector(scoreSelectors.getScore)
 
     const dispatch = useDispatch()
 
     const [solvedQuestions, setSolvedQuestions] = useState(0)
-    const [actualQuestion, setActualQuestion] = useState(perguntas[solvedQuestions])
+    const [actualQuestion, setActualQuestion] = useState(questions[solvedQuestions])
     const [canSkip, setCanSkip] = useState(true)
 
     useEffect(() => {
 
-        var questionsSize = Object.size(perguntas);
+        var questionsSize = Object.size(questions);
 
-        setActualQuestion(perguntas[solvedQuestions])
+        setActualQuestion(questions[solvedQuestions])
 
         if (solvedQuestions === questionsSize) {
             handleWin()
         }
-
     }, [solvedQuestions]);
-    
+
     const handleIncrementScore = () => dispatch(scoreActions.increment())
     const handleLose = () => dispatch(gameStateActions.gameOver())
     const handleWin = () => dispatch(gameStateActions.win())
 
-    const checkQuestion = (isCorrect) => {
-        if (isCorrect) {
+    const checkQuestion = (index) => {
+        if (index === actualQuestion.correct_index) {
             handleIncrementScore()
             setSolvedQuestions(solvedQuestions + 1)
         } else {
@@ -123,39 +55,50 @@ const GameScreen = () => {
         setCanSkip(false)
     }
 
-    if (actualQuestion) {
-
-        return (
-            <div className="Container">
-                <div className="Score">
-                    Pontuação: {score}
-                </div>
-                <div className="Question">
-                    {actualQuestion.title}
-                </div>
-                <div className="Answers">
-                    {actualQuestion.answers.map((answer, id) => (
-                        <button 
-                            key={id}
-                            className="Answer"
-                            onClick={() => checkQuestion(answer.isCorrect)}
-                        >
-                            {answer.value}
-                        </button>   
-                    ))}
-                </div>
-                {canSkip ? (
-                    <button 
-                        className="Skip"
-                        onClick={() => skipQuestion()}
-                    >
-                        Pular
-                    </button>
-                ) : null}
-            </div>  
-        )
-    }
-    
+    return (
+        <div className="Container">
+            <div className="Score">
+                Pontuação: {score}
+            </div>
+            <div className="Question">
+                {actualQuestion.title}
+            </div>
+            <div className="Answers">
+                <button 
+                    className="Answer"
+                    onClick={() => checkQuestion(0)}
+                >
+                    {actualQuestion.answer1}
+                </button>
+                <button 
+                    className="Answer"
+                    onClick={() => checkQuestion(1)}
+                >
+                    {actualQuestion.answer2}
+                </button>  
+                <button 
+                    className="Answer"
+                    onClick={() => checkQuestion(2)}
+                >
+                    {actualQuestion.answer3}
+                </button>  
+                <button 
+                    className="Answer"
+                    onClick={() => checkQuestion(3)}
+                >
+                    {actualQuestion.answer4}
+                </button>  
+            </div>
+            {canSkip ? (
+                <button 
+                    className="Skip"
+                    onClick={() => skipQuestion()}
+                >
+                    Pular
+                </button>
+            ) : null}
+        </div>  
+    )
 }
     
 export default GameScreen

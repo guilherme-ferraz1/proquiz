@@ -41,7 +41,7 @@
 }
 
 .Start-button {
-    height: 7vmin;
+    height: 6vmin;
     border-radius: 10px;
     border-width: 0;
     width: 30vmin;
@@ -50,5 +50,5 @@
     font-family: 'Roboto';
     font-size: large;
     cursor: pointer;
-    margin-top: 5vmin;
+    margin-top: 2vmin;
 }

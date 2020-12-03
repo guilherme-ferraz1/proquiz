@@ -1,7 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { actions as gameStateActions } from './../../actions/gameState'
 import { actions as scoreActions } from './../../actions/score'
 
 import { selectors as scoreSelectors} from './../../selectors/score'
@@ -23,12 +22,15 @@ const GameOver = () => {
 
     const dispatch = useDispatch()
     
-    const handleChangeScreen = () => dispatch(gameStateActions.game())
     const handleZeroScore = () => dispatch(scoreActions.zero())
 
     const startAgain = () => {
         handleZeroScore()
-        handleChangeScreen()
+        refreshPage()    
+    }
+
+    const refreshPage = () => { 
+        window.location.reload(); 
     }
 
   return (

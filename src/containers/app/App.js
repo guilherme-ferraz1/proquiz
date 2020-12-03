@@ -1,14 +1,26 @@
-import React from 'react'
-import logoQuiz from './../../assets/logoquiz.png'
-import { useSelector } from 'react-redux'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 
+import logoQuiz from './../../assets/logoquiz.png'
+
+import { useSelector } from 'react-redux'
 import { selectors as gameStateSelectors } from './../../selectors/gameState'
 
 import './App.css';
 
-import {GameScreen, WelcomeScreen, GameOver, GameWin} from './../../components'
+import {GameScreen, WelcomeScreen, GameOver, GameWin, AddQuestion} from './../../components'
 
 function App() {
+
+  const [questions, setQuestions] = useState(null)
+
+  useEffect(() => {
+    axios.get(`https://proquiz-api.herokuapp.com/Questions/`)
+    .then(res => {
+      setQuestions(res.data)
+    })
+    
+}, []);
 
   const gameState = useSelector(gameStateSelectors.getState)
 
@@ -17,11 +29,13 @@ function App() {
       case "welcome":
         return <WelcomeScreen/>
       case "game":
-        return <GameScreen/>
+        return <GameScreen questions={questions}/>
       case "gameOver":
         return <GameOver/>
       case "win":
         return <GameWin/>
+      case "add":
+        return <AddQuestion/>
       default:
         <WelcomeScreen/>
     }

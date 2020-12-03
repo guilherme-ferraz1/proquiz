@@ -12,6 +12,8 @@ const reducers = (state = INITIAL_STATE, action) => {
             return {...state, gameState: "game"}
         case "GAME_WIN":
             return {...state, gameState: "win"}
+        case "ADD_QUESTION":
+            return {...state, gameState: "add"}
         default:
             return state
     }

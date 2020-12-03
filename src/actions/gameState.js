@@ -10,7 +10,10 @@ const actions = {
     }),
     win: () => ({
         type: "GAME_WIN"
-    })
+    }),
+    add: () => ({
+        type: "ADD_QUESTION"
+    }),
 }
 
 export {actions}

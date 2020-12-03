@@ -1,0 +1,65 @@
+.Container {
+    display: flex;
+    height: 55vmin;
+    width: 100vmin;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    justify-content: center;
+    margin: auto;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.Text {
+    color: #FE1C42;
+    font-size: large;
+    margin-top: 2vmin;
+    margin-bottom: 2vmin;
+}
+
+.Text-info {
+    color: #FE1C42;
+    font-weight: bold;
+    font-size: small;
+    margin-top: 2vmin;
+    margin-bottom: 2vmin;
+}
+
+.Option {
+    height: 4vmin;
+    border-radius: 10px;
+    border-width: 0;
+    width: 40vmin;
+    background-color:white;
+    border-color:  #FE1C42;
+    border-width: 1px;
+    color: black;
+    font-family: 'Roboto';
+    font-size: medium;
+    cursor: text;
+    margin-top: 2vmin;
+    padding-left: 1vmin;
+}
+
+.Label {
+    font-family: 'Roboto';
+    color: #FE1C42;
+    font-size: medium;
+    margin-left: 1vmin;
+}
+
+.Inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.Radio {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+

@@ -5,7 +5,7 @@ import { reducers as gameStateReducers } from './gameState'
 
 const reducers = combineReducers({
     scoreReducers,
-    gameStateReducers
+    gameStateReducers,
 })
 
 export { reducers }
